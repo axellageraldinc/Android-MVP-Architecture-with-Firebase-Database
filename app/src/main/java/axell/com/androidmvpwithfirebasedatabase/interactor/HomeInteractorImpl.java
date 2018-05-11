@@ -1,4 +1,4 @@
-package axell.com.androidmvpwithfirebasedatabase;
+package axell.com.androidmvpwithfirebasedatabase.interactor;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -8,6 +8,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
+import axell.com.androidmvpwithfirebasedatabase.model.User;
 
 public class HomeInteractorImpl implements HomeContract.Interactor {
 
@@ -22,12 +25,12 @@ public class HomeInteractorImpl implements HomeContract.Interactor {
     }
 
     @Override
-    public void addUserToFirebaseDatabase(User user) {
+    public void saveUserToFirebaseDatabase(User user) {
         databaseReference.child(USERS).child(user.getId()).setValue(user);
     }
 
     @Override
-    public void showUsers() {
+    public void getAllUsersFromFirebaseDatabase() {
         databaseReference.child(USERS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

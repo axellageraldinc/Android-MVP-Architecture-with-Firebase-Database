@@ -1,6 +1,8 @@
-package axell.com.androidmvpwithfirebasedatabase;
+package axell.com.androidmvpwithfirebasedatabase.contract;
 
 import java.util.List;
+
+import axell.com.androidmvpwithfirebasedatabase.model.User;
 
 public interface HomeContract {
     interface View{
@@ -10,13 +12,12 @@ public interface HomeContract {
         void dismissDialogAddUser();
     }
     interface Interactor{
-        void addUserToFirebaseDatabase(User user);
-        void showUsers();
+        void saveUserToFirebaseDatabase(User user);
+        void getAllUsersFromFirebaseDatabase();
     }
     interface Presenter{
-        void showDialogAddUser();
         User buildUser(String name);
-        void addUserToFirebaseDatabase(User user);
+        void saveUser(User user);
         void showUsers(List<User> userList);
     }
 }

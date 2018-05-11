@@ -1,4 +1,4 @@
-package axell.com.androidmvpwithfirebasedatabase;
+package axell.com.androidmvpwithfirebasedatabase.view;
 
 import android.app.Dialog;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.List;
+
+import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
+import axell.com.androidmvpwithfirebasedatabase.presenter.HomePresenterImpl;
+import axell.com.androidmvpwithfirebasedatabase.R;
+import axell.com.androidmvpwithfirebasedatabase.model.User;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View, Button.OnClickListener {
 
@@ -46,11 +51,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnShowDialogAddUser:
-                homePresenter.showDialogAddUser();
+                showDialogAddUser();
                 break;
             case R.id.btnAddUser:
                 User user = homePresenter.buildUser(txtUserName.getText().toString());
-                homePresenter.addUserToFirebaseDatabase(user);
+                homePresenter.saveUser(user);
                 break;
         }
     }

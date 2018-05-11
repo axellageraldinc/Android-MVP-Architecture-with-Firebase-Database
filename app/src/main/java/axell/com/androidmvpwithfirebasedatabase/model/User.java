@@ -1,4 +1,4 @@
-package axell.com.androidmvpwithfirebasedatabase;
+package axell.com.androidmvpwithfirebasedatabase.model;
 
 public class User {
     private String id;
