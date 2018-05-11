@@ -19,5 +19,6 @@ public interface HomeContract {
         User buildUser(String name);
         void saveUser(User user);
         void showUsers(List<User> userList);
+        void onResume();
     }
 }

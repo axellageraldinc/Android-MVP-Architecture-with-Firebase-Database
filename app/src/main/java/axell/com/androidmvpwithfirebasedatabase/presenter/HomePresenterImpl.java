@@ -34,4 +34,9 @@ public class HomePresenterImpl implements HomeContract.Presenter {
     public void showUsers(List<User> userList) {
         homeView.showUsers(userList);
     }
+
+    @Override
+    public void onResume() {
+        homeInteractor.getAllUsersFromFirebaseDatabase();
+    }
 }

@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -28,6 +30,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private EditText txtUserName;
     private Button btnAddUser;
 
+    private RecyclerView recyclerViewUser;
+    private RecyclerViewUserAdapter recyclerViewUserAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         txtUserName = dialogAddUser.findViewById(R.id.txtUserName);
         btnAddUser = dialogAddUser.findViewById(R.id.btnAddUser);
         btnAddUser.setOnClickListener(this);
+        recyclerViewUser = findViewById(R.id.recyclerViewUser);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        homePresenter.onResume();
     }
 
     @Override
@@ -67,11 +79,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void showUsers(List<User> userList) {
-        Log.i(TAG, "USER LIST!");
-        for (User user:userList
-             ) {
-            Log.i(TAG, user.getId() + " | " + user.getName());
-        }
+        recyclerViewUserAdapter = new RecyclerViewUserAdapter(userList, this);
+        recyclerViewUser.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewUser.setAdapter(recyclerViewUserAdapter);
+        recyclerViewUserAdapter.notifyDataSetChanged();
     }
 
     @Override
