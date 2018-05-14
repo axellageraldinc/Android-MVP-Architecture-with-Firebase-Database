@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -14,10 +13,11 @@ import android.widget.EditText;
 
 import java.util.List;
 
+import axell.com.androidmvpwithfirebasedatabase.component.DaggerHomePresenterComponent;
 import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
-import axell.com.androidmvpwithfirebasedatabase.presenter.HomePresenterImpl;
 import axell.com.androidmvpwithfirebasedatabase.R;
 import axell.com.androidmvpwithfirebasedatabase.model.User;
+import axell.com.androidmvpwithfirebasedatabase.module.HomePresenterModule;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View, Button.OnClickListener {
 
@@ -37,7 +37,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        homePresenter = new HomePresenterImpl(this);
+//        homePresenter = new HomePresenterImpl(this);
+        homePresenter = DaggerHomePresenterComponent.builder()
+                .homePresenterModule(new HomePresenterModule(this))
+                .build()
+                .provideHomePresenter();
         initViews();
     }
 

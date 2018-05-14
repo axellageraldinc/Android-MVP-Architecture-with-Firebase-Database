@@ -9,6 +9,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
 import axell.com.androidmvpwithfirebasedatabase.model.User;
 
@@ -19,6 +21,7 @@ public class HomeInteractorImpl implements HomeContract.Interactor {
     private DatabaseReference databaseReference;
     private static final String USERS = "users";
 
+    @Inject
     public HomeInteractorImpl(HomeContract.Presenter homePresenter) {
         this.homePresenter = homePresenter;
         databaseReference = FirebaseDatabase.getInstance().getReference();
