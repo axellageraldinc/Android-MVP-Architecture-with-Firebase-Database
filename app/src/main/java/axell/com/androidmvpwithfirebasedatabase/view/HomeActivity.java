@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         dialogAddUser = new Dialog(this);
         dialogAddUser.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogAddUser.setContentView(R.layout.dialog_add_user);
-        txtUserName = dialogAddUser.findViewById(R.id.txtUserName);
+        txtUserName = dialogAddUser.findViewById(R.id.txtInputUsername);
         btnAddUser = dialogAddUser.findViewById(R.id.btnAddUser);
         btnAddUser.setOnClickListener(this);
         recyclerViewUser = findViewById(R.id.recyclerViewUser);
