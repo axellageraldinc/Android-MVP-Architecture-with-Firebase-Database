@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import axell.com.androidmvpwithfirebasedatabase.component.DaggerHomeInteractorComponent;
 import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
-import axell.com.androidmvpwithfirebasedatabase.interactor.HomeInteractorImpl;
 import axell.com.androidmvpwithfirebasedatabase.model.User;
 import axell.com.androidmvpwithfirebasedatabase.module.HomeInteractorModule;
 

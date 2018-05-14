@@ -1,7 +1,5 @@
 package axell.com.androidmvpwithfirebasedatabase.module;
 
-import javax.inject.Singleton;
-
 import axell.com.androidmvpwithfirebasedatabase.contract.HomeContract;
 import dagger.Module;
 import dagger.Provides;
